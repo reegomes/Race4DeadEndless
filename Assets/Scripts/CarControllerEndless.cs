@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
-using System.Collections;
 
 
 [System.Serializable]
@@ -24,9 +23,9 @@ public class CarControllerEndless : MonoBehaviour
     public float maxMotorTorque;
     public float maxSteeringAngle;
     public List<Dot_Truck> truck_Infos;
-    //public AudioSource audioEngine;
-    float motor;
-
+    public AudioSource audioEngine;
+    float motor, gas, gasTiming;
+    Rigidbody rb;
     // Variaveis do tutorial da unity
     public Graphic UI_Wheel;
 
@@ -44,7 +43,8 @@ public class CarControllerEndless : MonoBehaviour
     // Fim
 
     // Inicio Endless Runner
-    float speed = 10f;
+    [SerializeField]
+    float speed;
     // Fim Endless Runner
     public void VisualizeWheel(Dot_Truck wheelPair)
     {
@@ -59,12 +59,72 @@ public class CarControllerEndless : MonoBehaviour
     }
     void Start()
     {
-        //audioEngine = GetComponent<AudioSource>();
+        audioEngine = GetComponent<AudioSource>();
         rectT = UI_Wheel.rectTransform;
         InitEventsSystem();
+        rb = GetComponent<Rigidbody>();
     }
     public void Update()
     {
+        // Cases
+        switch (ShopStats.gas)
+        {
+            case 1:
+                gas = 200;
+                break;
+            case 2:
+                gas = 300;
+                break;
+            default:
+                gas = 100;
+                break;
+        }
+        switch (ShopStats.velocity)
+        {
+            case 1:
+                speed = 10;
+                Debug.Log(speed);
+                break;
+            case 2:
+                speed = 20;
+                Debug.Log(speed);
+                break;
+            case 3:
+                speed = 30;
+                Debug.Log(speed);
+                break;
+            case 4:
+                speed = 40;
+                Debug.Log(speed);
+                break;
+            default:
+                speed = 10;
+                Debug.Log(speed);
+                break;
+        }
+        switch (ShopStats.mass)
+        {
+            default:
+                rb.mass = 850;
+                break;
+            case 1:
+                rb.mass = 950;
+                break;
+            case 2:
+                rb.mass = 1050;
+                break;
+            case 3:
+                rb.mass = 1150;
+                break;
+            case 4:
+                rb.mass = 1250;
+                break;
+            case 5:
+                rb.mass = 1550;
+                break;
+        }
+        // Fim do Switch
+
         Wheel = wheelAngle / maximumSteeringAngle;
         //motor = maxMotorTorque * Input.GetAxis("Vertical");
         motor = maxMotorTorque * speed * Time.deltaTime;
@@ -127,14 +187,15 @@ public class CarControllerEndless : MonoBehaviour
     }
     private void OnCollisionEnter(Collision tank)
     {
-        if (tank.gameObject.CompareTag("TankZombie"))
+        /*if (tank.gameObject.CompareTag(""))
         {
             Time.timeScale = 0f;
-        }
+        }*/
+        Debug.Log("Colidiu com algo");
     }
     public void EngineSound()
     {
-        //audioEngine.pitch = motor / maxMotorTorque + 0x1;
+        audioEngine.pitch = motor / maxMotorTorque + 0x1;
     }
     public float GetClampedValue()
     {
@@ -186,7 +247,7 @@ public class CarControllerEndless : MonoBehaviour
         events.triggers.Add(entry);
     }
 
-    public void PressEvent (BaseEventData eventData)
+    public void PressEvent(BaseEventData eventData)
     {
         // Executed when mouse/finger starts touching the steering wheel
         Vector2 pointerPos = ((PointerEventData)eventData).position;
@@ -221,5 +282,17 @@ public class CarControllerEndless : MonoBehaviour
         DragEvent(eventData);
 
         wheelBeingHeld = false;
+    }
+    private void FixedUpdate()
+    {
+        // Gasosa
+
+        Debug.Log(gas);
+
+        // Fim da Gasosa
+    }
+    public void Nitro()
+    {
+        maxMotorTorque = 5000;
     }
 }

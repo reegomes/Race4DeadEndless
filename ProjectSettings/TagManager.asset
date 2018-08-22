@@ -5,10 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - Buildings
-  - TankZombie
   - WheelParticles
   - EndGame
   - SceneCars
+  - Zombie
   layers:
   - Default
   - TransparentFX
