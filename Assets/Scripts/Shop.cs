@@ -38,7 +38,7 @@ public class Shop : MonoBehaviour
     }
     public void OnClickGas()
     {
-        if (ShopStats.points >= ShopStats.gas)
+        if (ShopStats.gas <= ShopStats.points)
         {
             ShopStats.gas++;
             ShopStats.points--;
@@ -49,7 +49,7 @@ public class Shop : MonoBehaviour
     }
     public void OnClickVelocity()
     {
-        if (ShopStats.points >= ShopStats.velocity)
+        if (ShopStats.velocity <= ShopStats.points)
         {
             ShopStats.velocity++;
             ShopStats.points--;
@@ -60,7 +60,7 @@ public class Shop : MonoBehaviour
     }
     public void OnClickMass()
     {
-        if (ShopStats.points >= ShopStats.mass)
+        if (ShopStats.mass <= ShopStats.points)
         {
             ShopStats.mass++;
             ShopStats.points--;
@@ -70,7 +70,7 @@ public class Shop : MonoBehaviour
     }
     public void OnClickAngle()
     {
-        if (ShopStats.points >= ShopStats.angle)
+        if (ShopStats.angle <= ShopStats.points)
         {
             ShopStats.angle++;
             ShopStats.points--;

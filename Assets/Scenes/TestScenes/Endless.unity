@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.574817, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -6458,19 +6458,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b738750729fbf54d97cf553468113c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  obstacles:
-  - {fileID: 100068, guid: f35de99c93eccca49b5cca5a0c3cd288, type: 3}
-  - {fileID: 1292083398573244, guid: 52f4325cd94884f4abfd041ebde551cd, type: 2}
-  - {fileID: 100068, guid: 99911e5ccdcf2614b98a4951d2eb3907, type: 3}
-  - {fileID: 1699434524432164, guid: 96e95fa3bfda4694291ba5f94e1b9bf6, type: 2}
-  - {fileID: 100068, guid: fcbe5a9aaa74ffe43be8aad87691200a, type: 3}
-  - {fileID: 1429991326179506, guid: 7a998f0b783809946a70cf7dbc3bdf50, type: 2}
-  - {fileID: 100068, guid: d4689cd3824b81f4ea135759e5b088e0, type: 3}
-  - {fileID: 1324629846709932, guid: 9f3b4a9a82a62464c97e5b245e51cb61, type: 2}
-  - {fileID: 100068, guid: 8de891d85b961cd46a0911a9f71d9e22, type: 3}
-  - {fileID: 1490277048081522, guid: 5396df77a50e5b245a82f12a75c9533f, type: 2}
-  numberOfObstacles: {x: 15, y: 25}
-  newObstacles: []
 --- !u!1001 &1079418688
 Prefab:
   m_ObjectHideFlags: 0
@@ -12362,19 +12349,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b738750729fbf54d97cf553468113c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  obstacles:
-  - {fileID: 100068, guid: f35de99c93eccca49b5cca5a0c3cd288, type: 3}
-  - {fileID: 1292083398573244, guid: 52f4325cd94884f4abfd041ebde551cd, type: 2}
-  - {fileID: 100068, guid: 99911e5ccdcf2614b98a4951d2eb3907, type: 3}
-  - {fileID: 1699434524432164, guid: 96e95fa3bfda4694291ba5f94e1b9bf6, type: 2}
-  - {fileID: 100068, guid: fcbe5a9aaa74ffe43be8aad87691200a, type: 3}
-  - {fileID: 1429991326179506, guid: 7a998f0b783809946a70cf7dbc3bdf50, type: 2}
-  - {fileID: 100068, guid: d4689cd3824b81f4ea135759e5b088e0, type: 3}
-  - {fileID: 1324629846709932, guid: 9f3b4a9a82a62464c97e5b245e51cb61, type: 2}
-  - {fileID: 100068, guid: 8de891d85b961cd46a0911a9f71d9e22, type: 3}
-  - {fileID: 1490277048081522, guid: 5396df77a50e5b245a82f12a75c9533f, type: 2}
-  numberOfObstacles: {x: 15, y: 25}
-  newObstacles: []
 --- !u!1 &1617376365
 GameObject:
   m_ObjectHideFlags: 0
