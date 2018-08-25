@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Tracks : MonoBehaviour
-{
-    //public GameObject[] obstacles;
-    //public Vector2 numberOfObstacles;
-    //public List<GameObject> newObstacles;
+{   /* 
+    public GameObject[] obstacles;
+    public Vector2 numberOfObstacles;
+    public List<GameObject> newObstacles;
     // Use this for initialization
-    /* 
     void Start()
     {
         int newNumberOfObstacles = (int)Random.Range(numberOfObstacles.x, numberOfObstacles.y);
@@ -24,8 +23,8 @@ public class Tracks : MonoBehaviour
     {
         for (int i = 0; i < newObstacles.Count; i++)
         {
-            float posZMin = (0f / newObstacles.Count) + (0f / newObstacles.Count) * i;
-            float posZMax = (0f / newObstacles.Count) + (0f / newObstacles.Count) * i + 1;
+            float posZMin = (95f / newObstacles.Count) + (95f / newObstacles.Count) * i;
+            float posZMax = (95f / newObstacles.Count) + (95f / newObstacles.Count) * i + 1;
             newObstacles[i].transform.localPosition = new Vector3(0, 0, Random.Range(posZMin, posZMax));
             newObstacles[i].SetActive(true);
         }
@@ -35,12 +34,9 @@ public class Tracks : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            transform.position = new Vector3(0, 0, (transform.position.z + 1260f * 2));
+            transform.position = new Vector3((transform.position.z + -142 * 2), 0, 0);
+            //transform.position = new Vector3(0, 0, (transform.position.z + -31.77878f * 2));
             //PositionateObstacles();
-            SpawnZombies();
         }
-    }
-    void SpawnZombies(){
-
     }
 }

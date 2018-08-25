@@ -25,6 +25,8 @@ public class CarControllerEndless : MonoBehaviour
     public List<Dot_Truck> truck_Infos;
     public AudioSource audioEngine;
     float motor, gas, gasTiming;
+    [SerializeField]
+    float Whelllow;
     Rigidbody rb;
     // Variaveis do tutorial da unity
     public Graphic UI_Wheel;
@@ -83,23 +85,23 @@ public class CarControllerEndless : MonoBehaviour
         {
             case 1:
                 speed = 10;
-                Debug.Log(speed);
+                //Debug.Log(speed);
                 break;
             case 2:
                 speed = 20;
-                Debug.Log(speed);
+                //Debug.Log(speed);
                 break;
             case 3:
                 speed = 30;
-                Debug.Log(speed);
+                //Debug.Log(speed);
                 break;
             case 4:
                 speed = 40;
-                Debug.Log(speed);
+                //Debug.Log(speed);
                 break;
             default:
                 speed = 10;
-                Debug.Log(speed);
+                //Debug.Log(speed);
                 break;
         }
         switch (ShopStats.mass)
@@ -124,17 +126,19 @@ public class CarControllerEndless : MonoBehaviour
                 break;
         }
         // Fim do Switch
-
+        
         Wheel = wheelAngle / maximumSteeringAngle;
+        Whelllow = Wheel;
         //motor = maxMotorTorque * Input.GetAxis("Vertical");
         motor = maxMotorTorque * speed * Time.deltaTime;
 
         float steering = maxSteeringAngle * Wheel;
-        float brakeTorque = Mathf.Abs(Input.GetAxis("Jump"));
-        if (brakeTorque > 0.001)
+        float brakeTorque = Mathf.Abs(Whelllow);
+        if (brakeTorque > 0.90)
         {
             brakeTorque = maxMotorTorque;
-            motor = 0;
+            motor--;         
+            //Desacelera o carro conforme a curva
         }
         else
         {
@@ -183,7 +187,7 @@ public class CarControllerEndless : MonoBehaviour
             }
         }
         // Roda a imagem
-        rectT.localEulerAngles = Vector3.back * wheelAngle;
+        rectT.localEulerAngles = Vector3.back *2* wheelAngle;
     }
     private void OnCollisionEnter(Collision tank)
     {
@@ -191,7 +195,7 @@ public class CarControllerEndless : MonoBehaviour
         {
             Time.timeScale = 0f;
         }*/
-        Debug.Log("Colidiu com algo");
+        //Debug.Log("Colidiu com algo");
     }
     public void EngineSound()
     {
@@ -287,7 +291,7 @@ public class CarControllerEndless : MonoBehaviour
     {
         // Gasosa
 
-        Debug.Log(gas);
+        //Debug.Log(gas);
 
         // Fim da Gasosa
     }

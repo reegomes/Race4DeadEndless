@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class ShopStats : MonoBehaviour
 {
-    public static int velocity, gas, angle, mass;
+    public static int velocity, gas, angle, mass, nitro;
     public static int points;
 }
 
@@ -44,7 +44,7 @@ public class Shop : MonoBehaviour
             ShopStats.points--;
             PlayerPrefs.SetInt("Gas", ShopStats.gas);
             
-            Debug.Log(ShopStats.gas);
+            //Debug.Log(ShopStats.gas);
         }
     }
     public void OnClickVelocity()
@@ -55,7 +55,7 @@ public class Shop : MonoBehaviour
             ShopStats.points--;
             PlayerPrefs.SetInt("Velocity", ShopStats.velocity);
             
-            Debug.Log(ShopStats.velocity);
+            //Debug.Log(ShopStats.velocity);
         }
     }
     public void OnClickMass()
