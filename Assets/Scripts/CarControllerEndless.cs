@@ -109,12 +109,14 @@ public class CarControllerEndless : MonoBehaviour
                 nitroOk = true;
                 nNitros = 1;
                 life = 100;
+                Archievements.NitroIsEnable = true;
                 break;
             case 5:
                 speed = 60;
                 nitroOk = true;
                 nNitros = 3;
                 life = 200;
+                Archievements.NitroIsEnable = true;
                 break;
             default:
                 speed = 10;
@@ -213,11 +215,15 @@ public class CarControllerEndless : MonoBehaviour
         {
             Neon.SetActive(false);
         }
+        if (gas <= 0){
+            maxMotorTorque = 0;
+        }
     }
     private void OnCollisionEnter(Collision zombie)
     {
         if(this.gameObject.CompareTag("Zombie")){
             life--;
+            gas--;
         }
     }
     public void EngineSound()

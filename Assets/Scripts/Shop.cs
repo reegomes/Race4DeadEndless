@@ -53,7 +53,7 @@ public class Shop : MonoBehaviour
             ShopStats.velocity++;
             ShopStats.points--;
             PlayerPrefs.SetInt("Velocity", ShopStats.velocity);
-            
+            Archievements.VSFasterAsFuck = true;
             //Debug.Log(ShopStats.velocity);
         }
     }

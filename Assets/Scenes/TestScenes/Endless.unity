@@ -5328,7 +5328,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &553154603
 GameObject:
@@ -5485,34 +5485,6 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 553154603}
   m_CullTransparentMesh: 0
---- !u!1 &562251873
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 562251874}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &562251874
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 562251873}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.373, y: 2.1677, z: 0.8528}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 8
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &565852722
 GameObject:
   m_ObjectHideFlags: 0
@@ -5666,6 +5638,7 @@ GameObject:
   - component: {fileID: 591233429}
   - component: {fileID: 591233428}
   - component: {fileID: 591233427}
+  - component: {fileID: 591233431}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -5756,6 +5729,25 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &591233431
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 591233426}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bef5a6181b9fc6f4e85271f98867aff9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  archievs:
+  - {fileID: 966762146}
+  - {fileID: 571088747}
+  - {fileID: 2138110203}
+  - {fileID: 2014640246}
+  - {fileID: 933827592}
+  - {fileID: 1263623016}
+  - {fileID: 39782989}
 --- !u!4 &645533058 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400002, guid: 1dd94e1495fe23f4b9386e801f7cb758,
@@ -6346,7 +6338,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.99999905, y: 173.5}
+  m_AnchoredPosition: {x: 1, y: 173.5}
   m_SizeDelta: {x: -32, y: -405}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &966762148
@@ -7396,7 +7388,7 @@ Transform:
   m_Children:
   - {fileID: 323555608}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 25, y: 0, z: 0}
 --- !u!81 &1617376367
 AudioListener:
