@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine.Events;
@@ -19,7 +20,6 @@ public class Dot_Truck : System.Object
 
 public class CarControllerEndless : MonoBehaviour
 {
-
     public float maxMotorTorque;
     public float maxSteeringAngle;
     public List<Dot_Truck> truck_Infos;
@@ -27,27 +27,27 @@ public class CarControllerEndless : MonoBehaviour
     float motor, gas, gasTiming;
     [SerializeField]
     float Whelllow;
+    bool nitroOk;
+    int nNitros;
     Rigidbody rb;
     // Variaveis do tutorial da unity
     public Graphic UI_Wheel;
-
     RectTransform rectT;
     Vector2 centerPoint;
-
     public float maximumSteeringAngle = 35f;
     public float wheelReleasedSpeed = 35f;
-
     float wheelAngle = 0f;
     float wheelPrevAngle = 0f;
     float Wheel;
-
     bool wheelBeingHeld = false;
+    public static bool neon;
+    int life;
     // Fim
 
-    // Inicio Endless Runner
     [SerializeField]
     float speed;
-    // Fim Endless Runner
+    public GameObject NitroP, Blur, Neon;
+
     public void VisualizeWheel(Dot_Truck wheelPair)
     {
         Quaternion rot;
@@ -77,31 +77,48 @@ public class CarControllerEndless : MonoBehaviour
             case 2:
                 gas = 300;
                 break;
+            case 3:
+                gas = 500;
+                break;
+            case 5:
+                gas = 700;
+                break;
+            case 6:
+                gas = 1000;
+                break;
             default:
-                gas = 100;
+                gas = 60;
                 break;
         }
         switch (ShopStats.velocity)
         {
             case 1:
-                speed = 10;
-                //Debug.Log(speed);
+                speed = 20;
+                life = 20;
                 break;
             case 2:
-                speed = 20;
-                //Debug.Log(speed);
+                speed = 30;
+                life = 30;
                 break;
             case 3:
-                speed = 30;
-                //Debug.Log(speed);
+                speed = 40;
+                life = 50;
                 break;
             case 4:
-                speed = 40;
-                //Debug.Log(speed);
+                speed = 50;
+                nitroOk = true;
+                nNitros = 1;
+                life = 100;
+                break;
+            case 5:
+                speed = 60;
+                nitroOk = true;
+                nNitros = 3;
+                life = 200;
                 break;
             default:
                 speed = 10;
-                //Debug.Log(speed);
+                life = 10;
                 break;
         }
         switch (ShopStats.mass)
@@ -119,14 +136,14 @@ public class CarControllerEndless : MonoBehaviour
                 rb.mass = 1150;
                 break;
             case 4:
-                rb.mass = 1250;
+                rb.mass = 1550;
                 break;
             case 5:
-                rb.mass = 1550;
+                rb.mass = 2550;
                 break;
         }
         // Fim do Switch
-        
+
         Wheel = wheelAngle / maximumSteeringAngle;
         Whelllow = Wheel;
         //motor = maxMotorTorque * Input.GetAxis("Vertical");
@@ -134,10 +151,10 @@ public class CarControllerEndless : MonoBehaviour
 
         float steering = maxSteeringAngle * Wheel;
         float brakeTorque = Mathf.Abs(Whelllow);
-        if (brakeTorque > 0.90)
+        if (brakeTorque > 0.90 || SwipeController.Instance.IsSwiping(SwipeDirection.Down))
         {
             brakeTorque = maxMotorTorque;
-            motor--;         
+            motor--;
             //Desacelera o carro conforme a curva
         }
         else
@@ -187,15 +204,21 @@ public class CarControllerEndless : MonoBehaviour
             }
         }
         // Roda a imagem
-        rectT.localEulerAngles = Vector3.back *2* wheelAngle;
-    }
-    private void OnCollisionEnter(Collision tank)
-    {
-        /*if (tank.gameObject.CompareTag(""))
+        rectT.localEulerAngles = Vector3.back * 2 * wheelAngle;
+        // Neon
+        if(neon == true){
+            Neon.SetActive(true);
+        }
+        else
         {
-            Time.timeScale = 0f;
-        }*/
-        //Debug.Log("Colidiu com algo");
+            Neon.SetActive(false);
+        }
+    }
+    private void OnCollisionEnter(Collision zombie)
+    {
+        if(this.gameObject.CompareTag("Zombie")){
+            life--;
+        }
     }
     public void EngineSound()
     {
@@ -287,16 +310,40 @@ public class CarControllerEndless : MonoBehaviour
 
         wheelBeingHeld = false;
     }
-    private void FixedUpdate()
+    void Awake()
     {
-        // Gasosa
-
-        //Debug.Log(gas);
-
-        // Fim da Gasosa
+        StartCoroutine("UpdateFake");
     }
-    public void Nitro()
+    IEnumerator Nitro()
     {
-        maxMotorTorque = 5000;
+        yield return new WaitForSeconds(0.5f);
+        //if (SwipeController.Instance.IsSwiping(SwipeDirection.Up) && nitroOk == true && nNitros >= 1)
+        if (SwipeController.Instance.IsSwiping(SwipeDirection.Up))
+        {
+            maxMotorTorque = 300;
+            //CameraScript.pov = true;
+            NitroP.SetActive(true);
+            Blur.SetActive(true);
+            nNitros--;
+        }
+        else if (SwipeController.Instance.IsSwiping(SwipeDirection.None))
+        {
+            Debug.Log("Voltei ao normal");
+            NitroP.SetActive(false);
+            Blur.SetActive(false);
+            StartCoroutine("Back");
+        }
+    }
+    IEnumerator UpdateFake()
+    {
+        yield return new WaitForSeconds(0.05f);
+        StartCoroutine("UpdateFake");
+        StartCoroutine("Nitro");
+    }
+    IEnumerator Back()
+    {
+        yield return new WaitForSeconds(2f);
+        maxMotorTorque = 60;
+        //CameraScript.pov = false;
     }
 }

@@ -1,15 +1,54 @@
 using UnityEngine;
-
-public class Archievements : MonoBehaviour {
-    public GameObject[] Archiev;
-    void Start() {
-
-    }
-    void Update()
+using System.Collections;
+using System.Collections.Generic;
+public class Archievements : MonoBehaviour
+{
+    void Start()
     {
-        for (int i = 0; i < Archiev.Length; i++)
-        {
-            
-        }
+        StartCoroutine("ArchUpdate");
+    }
+    IEnumerator ArchUpdate()
+    {
+        yield return new WaitForSeconds(0.05f);
+        StartCoroutine("ArchFake");
+    }
+    IEnumerator Stop()
+    {
+        yield return new WaitForSeconds(2f);
+        StopCoroutine("");
+        StopCoroutine("");
+        StopCoroutine("");
+        StopCoroutine("");
+        StopCoroutine("");
+        StopCoroutine("");
+        StopCoroutine("");
+    }
+    IEnumerator Paradise()
+    {
+        return null;
+    }
+    IEnumerator INeverStop()
+    {
+        return null;
+    }
+    IEnumerator MyCarComesFirst()
+    {
+        return null;
+    }
+    IEnumerator WeFallButDontStop()
+    {
+        return null;
+    }
+    IEnumerator FastIsBetter()
+    {
+        return null;
+    }
+    IEnumerator FastThenVS()
+    {
+        return null;
+    }
+    IEnumerator MyDude()
+    {
+        return null;
     }
 }

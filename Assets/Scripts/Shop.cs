@@ -20,7 +20,6 @@ public class Shop : MonoBehaviour
     TextMeshProUGUI points;
     [SerializeField]
     TextMeshProUGUI mass;
-
     private void Start()
     {
         ShopStats.velocity = PlayerPrefs.GetInt("Velocity", ShopStats.velocity);
