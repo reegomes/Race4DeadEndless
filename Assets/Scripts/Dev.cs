@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Dev : MonoBehaviour {
     Toggle neon;
@@ -14,5 +15,8 @@ public class Dev : MonoBehaviour {
         {
             CarControllerEndless.neon = false;
         }
+    }
+    public void BackToMainMenu(){
+        SceneManager.LoadScene("Menu");
     }
 }

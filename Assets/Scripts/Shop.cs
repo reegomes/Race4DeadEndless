@@ -76,8 +76,8 @@ public class Shop : MonoBehaviour
             PlayerPrefs.SetInt("Angle", ShopStats.angle);
         }
     }
-    public void GoToGame()
+    public void GoToMenu()
     {
-        SceneManager.LoadScene("Endless");
+        SceneManager.LoadScene("Menu");
     }
 }

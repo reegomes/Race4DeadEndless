@@ -29,13 +29,13 @@ public class Buttons : MonoBehaviour {
                 Panel_Achieve.SetActive(false);
                 break;
             case 1:
-                SceneManager.LoadScene("Game_scene1");
+                SceneManager.LoadScene("Endless");
                 break;
             case 2:
                 panel_Credits.SetActive(true);
                 break;
             case 3:
-                Panel_options_menu.SetActive(true);
+                SceneManager.LoadScene("Shop");
                 break;
             case 4:
                 Application.Quit();
@@ -43,7 +43,9 @@ public class Buttons : MonoBehaviour {
             case 5:
                 Panel_Achieve.SetActive(true);
                 break;
-
+            case 6:
+                SceneManager.LoadScene("Dev");
+                break;
         }
     }
 

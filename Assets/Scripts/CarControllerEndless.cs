@@ -41,7 +41,8 @@ public class CarControllerEndless : MonoBehaviour
     float Wheel;
     bool wheelBeingHeld = false;
     public static bool neon;
-    int life;
+    float life;
+    public Image lifeBar;
     // Fim
 
     [SerializeField]
@@ -218,12 +219,13 @@ public class CarControllerEndless : MonoBehaviour
         if (gas <= 0){
             maxMotorTorque = 0;
         }
+        //lifeBar.GetComponent<RectTransform>().offsetMax = new Vector2(life, -10f);
     }
     private void OnCollisionEnter(Collision zombie)
     {
         if(this.gameObject.CompareTag("Zombie")){
             life--;
-            gas--;
+            gas--; 
         }
     }
     public void EngineSound()
@@ -323,8 +325,8 @@ public class CarControllerEndless : MonoBehaviour
     IEnumerator Nitro()
     {
         yield return new WaitForSeconds(0.5f);
-        //if (SwipeController.Instance.IsSwiping(SwipeDirection.Up) && nitroOk == true && nNitros >= 1)
-        if (SwipeController.Instance.IsSwiping(SwipeDirection.Up))
+        if (SwipeController.Instance.IsSwiping(SwipeDirection.Up) && nitroOk == true && nNitros >= 1)
+        //if (SwipeController.Instance.IsSwiping(SwipeDirection.Up))
         {
             maxMotorTorque = 300;
             //CameraScript.pov = true;
@@ -348,7 +350,7 @@ public class CarControllerEndless : MonoBehaviour
     }
     IEnumerator Back()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(5f);
         maxMotorTorque = 60;
         //CameraScript.pov = false;
     }
