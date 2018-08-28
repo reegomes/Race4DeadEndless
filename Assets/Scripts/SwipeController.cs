@@ -51,7 +51,7 @@ public class SwipeController : MonoBehaviour
         else return false;
     }
     IEnumerator Reset(){
-        yield return new WaitForSeconds (2f);
+        yield return new WaitForSeconds (3f);
         Direction = SwipeDirection.None;
         StopCoroutine("Reset");
     }

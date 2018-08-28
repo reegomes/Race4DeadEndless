@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class RayCastPlayer : MonoBehaviour
 {
@@ -6,6 +7,7 @@ public class RayCastPlayer : MonoBehaviour
     float timerArch;
     int intTimerArch;
     int archColl;
+    public GameObject pauseMenu;
     void Update()
     {
         timerArch += Time.deltaTime;
@@ -38,11 +40,13 @@ public class RayCastPlayer : MonoBehaviour
     }
     void EndGame()
     {
-        Time.timeScale = 0f;
+        //Time.timeScale = 0f;
         if (archColl > ShopStats.points){
             Archievements.collBeforeTheEnd = true;
         }
-        
+        //SceneManager.LoadScene(2);
+        Pause.derrota = true;
+        pauseMenu.SetActive(true);
         Debug.Log("Perdeu");
     }
 }

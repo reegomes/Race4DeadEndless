@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 public class ShopStats : MonoBehaviour
 {
     public static int velocity, gas, angle, mass, nitro;
-    public static int points;
+    public static int points = 100;
 }
 
 public class Shop : MonoBehaviour

@@ -106,6 +106,7 @@ public class NormalZombie : MonoBehaviour
     {
         ZombieIsDead = true;
         anim.SetInteger("AnimValue", anim_Die_Value);
+        Destroy(this.gameObject);
     }
 
 }

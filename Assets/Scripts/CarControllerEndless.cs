@@ -40,7 +40,7 @@ public class CarControllerEndless : MonoBehaviour
     float wheelPrevAngle = 0f;
     float Wheel;
     bool wheelBeingHeld = false;
-    public static bool neon;
+    public static bool neon = true;
     float life;
     public Image lifeBar;
     // Fim
@@ -154,7 +154,7 @@ public class CarControllerEndless : MonoBehaviour
 
         float steering = maxSteeringAngle * Wheel;
         float brakeTorque = Mathf.Abs(Whelllow);
-        if (brakeTorque > 0.90 || SwipeController.Instance.IsSwiping(SwipeDirection.Down))
+        if (brakeTorque > 0.90)
         {
             brakeTorque = maxMotorTorque;
             motor--;
@@ -340,6 +340,12 @@ public class CarControllerEndless : MonoBehaviour
             NitroP.SetActive(false);
             Blur.SetActive(false);
             StartCoroutine("Back");
+        }
+        
+
+        if(SwipeController.Instance.IsSwiping(SwipeDirection.Down))
+        {
+            motor--;
         }
     }
     IEnumerator UpdateFake()
